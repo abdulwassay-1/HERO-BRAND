@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERO BRAND | Free Fire Tournaments</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#07080d;--card:#11131c;--card2:#171a25;--text:#f5f7ff;--muted:#9ba3b7;--accent:#ffb000;--accent2:#ff5b22;--line:#252938}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 80% 10%,#29200b 0,transparent 28%),var(--bg);color:var(--text);line-height:1.5}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(7,8,13,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:900;letter-spacing:1px}.logo span{color:var(--accent)}
+nav{display:flex;gap:24px;color:#c8ccda;font-size:14px;font-weight:700}
+nav a:hover{color:var(--accent)}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#111;font-weight:900;border:0;cursor:pointer}
+.btn.outline{background:transparent;color:var(--text);border:1px solid #454a5d}
+.hero{min-height:590px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px}
+.badge{display:inline-block;border:1px solid #4b3a13;background:#211a09;color:#ffd36b;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(48px,7vw,84px);line-height:.92;letter-spacing:-3px}
+h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:17px;max-width:590px;margin:22px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{background:linear-gradient(145deg,#1a1d28,#0d0f16);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 20px 60px #0008}
+.hero-card h3{font-size:22px;margin-bottom:5px}.small{color:var(--muted);font-size:13px}
+.prize{font-size:44px;font-weight:900;color:var(--accent);margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 70px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}.stat b{font-size:28px}.stat p{color:var(--muted);font-size:12px}
+section{padding:70px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.section-head h2{font-size:34px}.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card:hover{border-color:#6d5520;transform:translateY(-2px);transition:.2s}
+.tag{display:inline-block;color:#ffd56d;background:#2a210d;padding:5px 9px;border-radius:7px;font-size:11px;font-weight:800;margin-bottom:15px}
+.card h3{font-size:21px;margin-bottom:8px}.meta{color:var(--muted);font-size:13px;margin:6px 0}.price{font-size:25px;font-weight:900;color:var(--accent);margin:14px 0}
+.card .btn{width:100%;text-align:center;margin-top:10px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+th,td{text-align:left;padding:15px;border-bottom:1px solid var(--line);font-size:14px}th{color:#ffd36b}td{color:#d9dce7}
+form{max-width:720px;margin:auto;background:var(--card);padding:28px;border:1px solid var(--line);border-radius:18px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{font-size:13px;color:#cbd0df}input,select,textarea{width:100%;margin-top:7px;background:#0b0d13;color:#fff;border:1px solid #303444;border-radius:9px;padding:12px;outline:none}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rule{padding:18px;background:var(--card);border:1px solid var(--line);border-radius:14px}.rule b{display:block;margin-bottom:5px}.rule p{color:var(--muted);font-size:13px}
+.notice{padding:16px;border-left:3px solid var(--accent);background:#15130d;color:#c9cbd4;margin-top:18px;border-radius:8px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:13px}
+@media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr;padding:55px 0}.grid{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.rules{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a class="logo" href="#home">HERO <span>BRAND</span></a>
+<nav><a href="#home">Home</a><a href="#tournaments">Tournaments</a><a href="#register">Register</a><a href="#leaderboard">Leaderboard</a><a href="#rules">Rules</a></nav>
+<a class="btn" href="#register">Join Now</a>
+</div></header>
+
+<main>
+<section id="home"><div class="container hero">
+<div>
+<span class="badge">🔥 FREE FIRE TOURNAMENT PLATFORM</span>
+<h1>PLAY.<br><span>COMPETE.</span><br>WIN.</h1>
+<p>Welcome to HERO BRAND — your home for competitive Free Fire tournaments, team battles, leaderboards and exciting prize pools.</p>
+<div class="actions"><a class="btn" href="#tournaments">View Tournaments</a><a class="btn outline" href="#register">Register Team</a></div>
+</div>
+<div class="hero-card">
+<span class="tag">UPCOMING</span>
+<h3>HERO CLASH #01</h3><p class="small">Squad Tournament • 4 Players</p>
+<div class="prize">Rs. 50,000</div>
+<p class="meta">📅 12 October 2026 &nbsp; • &nbsp; ⏰ 8:00 PM</p>
+<p class="meta">🎟 Entry: Rs. 500 &nbsp; • &nbsp; 👥 48 / 50 Slots</p>
+<a class="btn" style="margin-top:18px;width:100%;text-align:center" href="#register">Register Now</a>
+</div>
+</div></section>
+
+<div class="container grid">
+<div class="stat"><b>24+</b><p>TOURNAMENTS</p></div><div class="stat"><b>1.2K+</b><p>PLAYERS</p></div><div class="stat"><b>Rs. 5L+</b><p>PRIZES WON</p></div><div class="stat"><b>100%</b><p>COMPETITIVE</p></div>
+</div>
+
+<section id="tournaments"><div class="container">
+<div class="section-head"><div><h2>Upcoming Tournaments</h2><p>Choose your battle and secure your slot.</p></div></div>
+<div class="cards">
+<div class="card"><span class="tag">OPEN</span><h3>HERO CLASH #01</h3><p class="meta">Squad • 50 Slots</p><p class="meta">12 Oct 2026 • 8:00 PM</p><div class="price">Rs. 50,000</div><a class="btn" href="#register">Register</a></div>
+<div class="card"><span class="tag">OPEN</span><h3>BOOYAH NIGHT</h3><p class="meta">Squad • 25 Slots</p><p class="meta">18 Oct 2026 • 9:00 PM</p><div class="price">Rs. 25,000</div><a class="btn" href="#register">Register</a></div>
+<div class="card"><span class="tag">SOON</span><h3>HERO ELITE CUP</h3><p class="meta">Squad • 100 Slots</p><p class="meta">25 Oct 2026 • 8:30 PM</p><div class="price">Rs. 100,000</div><a class="btn" href="#register">Register</a></div>
+</div></div></section>
+
+<section id="leaderboard"><div class="container">
+<div class="section-head"><div><h2>Leaderboard</h2><p>Current tournament standings.</p></div></div>
+<table><thead><tr><th>#</th><th>Team</th><th>Matches</th><th>Kills</th><th>Points</th></tr></thead>
+<tbody><tr><td>1</td><td>🔥 Alpha Squad</td><td>5</td><td>42</td><td>78</td></tr><tr><td>2</td><td>⚡ Shadow X</td><td>5</td><td>38</td><td>72</td></tr><tr><td>3</td><td>💀 Phantom</td><td>5</td><td>35</td><td>68</td></tr><tr><td>4</td><td>👑 Kings 4</td><td>5</td><td>31</td><td>61</td></tr></tbody></table>
+</div></section>
+
+<section id="register"><div class="container">
+<div class="section-head"><div><h2>Team Registration</h2><p>Fill in your team details. Replace this demo form with your preferred form service later.</p></div></div>
+<form onsubmit="submitForm(event)">
+<div class="formgrid">
+<label>Team Name<input required name="team" placeholder="Enter team name"></label>
+<label>Captain Name<input required name="captain" placeholder="Captain name"></label>
+<label>WhatsApp Number<input required name="phone" placeholder="+92 3XX XXXXXXX"></label>
+<label>Game UID<input required name="uid" placeholder="Captain UID"></label>
+<label>Player 2<input name="p2" placeholder="Player 2 name"></label>
+<label>Player 3<input name="p3" placeholder="Player 3 name"></label>
+<label>Player 4<input name="p4" placeholder="Player 4 name"></label>
+<label>Tournament<select name="tournament"><option>HERO CLASH #01</option><option>BOOYAH NIGHT</option><option>HERO ELITE CUP</option></select></label>
+<label class="full">Discord / Additional Info<textarea name="info" placeholder="Discord ID, payment note, etc."></textarea></label>
+</div>
+<button class="btn" style="width:100%;margin-top:18px" type="submit">Submit Registration</button>
+<div id="formmsg" class="notice" style="display:none">Registration form submitted locally. Connect Google Forms/Formspree or a backend to receive entries online.</div>
+</form>
+</div></section>
+
+<section id="rules"><div class="container">
+<div class="section-head"><div><h2>Tournament Rules</h2><p>Basic rules for a fair and competitive match.</p></div></div>
+<div class="rules">
+<div class="rule"><b>01 — Team Lineup</b><p>Each squad must play with registered players only.</p></div>
+<div class="rule"><b>02 — Fair Play</b><p>Hacks, scripts, exploits and unfair third-party tools are prohibited.</p></div>
+<div class="rule"><b>03 — Check-in</b><p>Teams should complete check-in before the announced deadline.</p></div>
+<div class="rule"><b>04 — Match Room</b><p>Room ID and password should only be shared through official channels.</p></div>
+<div class="rule"><b>05 — Evidence</b><p>Keep screenshots or match results when requested by admins.</p></div>
+<div class="rule"><b>06 — Admin Decision</b><p>Organizers may review disputes using available match evidence.</p></div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="container">© 2026 HERO BRAND • Free Fire Tournament Platform • Replace this text with your Discord / WhatsApp / social links.</div></footer>
+
+<script>
+function submitForm(e){
+ e.preventDefault();
+ document.getElementById('formmsg').style.display='block';
+ e.target.reset();
+}
+</script>
+</body>
+</html>
