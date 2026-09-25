@@ -91,22 +91,55 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-s
 </div></section>
 
 <section id="register"><div class="container">
-<div class="section-head"><div><h2>Team Registration</h2><p>Fill in your team details. Replace this demo form with your preferred form service later.</p></div></div>
-<form onsubmit="submitForm(event)">
+<div class="section-head"><div><h2>Team Registration</h2><p>Register your squad for an upcoming HERO BRAND tournament.</p></div></div>
+
+<form id="registrationForm"
+      action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+      method="POST"
+      target="submitFrame"
+      onsubmit="showSubmitted()">
+
 <div class="formgrid">
-<label>Team Name<input required name="team" placeholder="Enter team name"></label>
-<label>Captain Name<input required name="captain" placeholder="Captain name"></label>
-<label>WhatsApp Number<input required name="phone" placeholder="+92 3XX XXXXXXX"></label>
-<label>Game UID<input required name="uid" placeholder="Captain UID"></label>
-<label>Player 2<input name="p2" placeholder="Player 2 name"></label>
-<label>Player 3<input name="p3" placeholder="Player 3 name"></label>
-<label>Player 4<input name="p4" placeholder="Player 4 name"></label>
-<label>Tournament<select name="tournament"><option>HERO CLASH #01</option><option>BOOYAH NIGHT</option><option>HERO ELITE CUP</option></select></label>
+<label>Team Name *<input required name="team" placeholder="Enter team name"></label>
+<label>Captain Name *<input required name="captain" placeholder="Captain name"></label>
+<label>WhatsApp Number *<input required name="phone" placeholder="+92 3XX XXXXXXX"></label>
+<label>Captain Game UID *<input required name="uid" placeholder="Free Fire UID"></label>
+
+<label>Player 2 Name *<input required name="p2" placeholder="Player 2"></label>
+<label>Player 2 UID *<input required name="uid2" placeholder="Player 2 UID"></label>
+<label>Player 3 Name *<input required name="p3" placeholder="Player 3"></label>
+<label>Player 3 UID *<input required name="uid3" placeholder="Player 3 UID"></label>
+
+<label>Player 4 Name *<input required name="p4" placeholder="Player 4"></label>
+<label>Player 4 UID *<input required name="uid4" placeholder="Player 4 UID"></label>
+
+<label>Tournament *<select required name="tournament">
+<option value="HERO CLASH #01">HERO CLASH #01</option>
+<option value="BOOYAH NIGHT">BOOYAH NIGHT</option>
+<option value="HERO ELITE CUP">HERO ELITE CUP</option>
+</select></label>
+
+<label>Payment Method<select name="payment">
+<option>JazzCash</option><option>EasyPaisa</option><option>Bank Transfer</option><option>Not Paid Yet</option>
+</select></label>
+
+<label class="full">Payment Transaction ID / TID<input name="tid" placeholder="Enter transaction ID if paid"></label>
 <label class="full">Discord / Additional Info<textarea name="info" placeholder="Discord ID, payment note, etc."></textarea></label>
 </div>
+
 <button class="btn" style="width:100%;margin-top:18px" type="submit">Submit Registration</button>
-<div id="formmsg" class="notice" style="display:none">Registration form submitted locally. Connect Google Forms/Formspree or a backend to receive entries online.</div>
+
+<div id="formmsg" class="notice" style="display:none">
+✅ Registration submitted successfully! Your team details have been sent to HERO BRAND.
+</div>
 </form>
+
+<iframe name="submitFrame" id="submitFrame" style="display:none"></iframe>
+
+<div class="notice">
+<strong>Admin setup:</strong> This form is connected to Google Sheets through a free Google Apps Script.
+After you deploy the script, paste its Web App URL into the form's <code>action</code> field.
+</div>
 </div></section>
 
 <section id="rules"><div class="container">
@@ -125,10 +158,11 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-s
 <footer><div class="container">© 2026 HERO BRAND • Free Fire Tournament Platform • Replace this text with your Discord / WhatsApp / social links.</div></footer>
 
 <script>
-function submitForm(e){
- e.preventDefault();
- document.getElementById('formmsg').style.display='block';
- e.target.reset();
+function showSubmitted(){
+  setTimeout(function(){
+    document.getElementById('formmsg').style.display='block';
+    document.getElementById('registrationForm').reset();
+  }, 800);
 }
 </script>
 </body>
