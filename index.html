@@ -45,9 +45,53 @@ label{font-size:13px;color:#cbd0df}input,select,textarea{width:100%;margin-top:7
 .notice{padding:16px;border-left:3px solid var(--accent);background:#15130d;color:#c9cbd4;margin-top:18px;border-radius:8px}
 footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:13px}
 @media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr;padding:55px 0}.grid{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.rules{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}h1{letter-spacing:-2px}}
+
+/* PLAYER REGISTRATION GATE */
+#playerGate{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 0%,#2b2108 0,transparent 38%),#07080d;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto}
+.auth-card{width:min(520px,100%);background:#11131c;border:1px solid #252938;border-radius:22px;padding:32px;box-shadow:0 25px 80px rgba(0,0,0,.55)}
+.auth-brand{text-align:center;font-size:27px;font-weight:900;letter-spacing:1px;margin-bottom:8px}.auth-brand span{color:#ffb000}
+.auth-card h2{text-align:center;font-size:25px;margin:8px 0}
+.auth-sub{text-align:center;color:#9ba3b7;font-size:14px;margin-bottom:24px}
+.auth-form{display:grid;gap:15px}
+.auth-form label{font-size:13px;color:#c8ccda;font-weight:700}
+.auth-form input{width:100%;margin-top:7px;padding:13px 14px;border:1px solid #303445;border-radius:10px;background:#090b11;color:#fff;outline:none}
+.auth-form input:focus{border-color:#ffb000}
+.auth-btn{width:100%;border:0;cursor:pointer;margin-top:4px}
+.auth-error{display:none;color:#ff7676;font-size:13px;text-align:center}
+#tournamentSite{display:none}
 </style>
 </head>
 <body>
+
+<div id="playerGate">
+  <div class="auth-card">
+    <div class="auth-brand">HERO <span>BRAND</span></div>
+    <h2>Player Registration</h2>
+    <p class="auth-sub">Register first, then your tournament page will open.</p>
+    <form class="auth-form" id="playerRegistrationForm">
+      <label>Player Name *
+        <input id="playerName" required placeholder="Enter your player name">
+      </label>
+      <label>Player UID *
+        <input id="playerUid" required placeholder="Enter your Free Fire UID">
+      </label>
+      <label>Gmail *
+        <input id="playerEmail" type="email" required placeholder="Enter your Gmail">
+      </label>
+      <label>HERO BRAND Password *
+        <input id="playerPassword" type="password" required minlength="6" placeholder="Create a password">
+      </label>
+      <label>Confirm Password *
+        <input id="playerConfirmPassword" type="password" required minlength="6" placeholder="Confirm your password">
+      </label>
+      <div class="auth-error" id="playerError"></div>
+      <button class="btn auth-btn" type="submit">Register & Open Tournaments</button>
+    </form>
+    <p class="auth-sub" style="margin:14px 0 0;font-size:12px">Use a HERO BRAND password here — never enter your real Gmail password. These password fields are not sent to your tournament Google Sheet.</p>
+  </div>
+</div>
+<div id="tournamentSite">
+
 <header><div class="container nav">
 <a class="logo" href="#home">HERO <span>BRAND</span></a>
 <nav><a href="#home">Home</a><a href="#tournaments">Tournaments</a><a href="#register">Register</a><a href="#leaderboard">Leaderboard</a><a href="#rules">Rules</a></nav>
@@ -157,7 +201,51 @@ After you deploy the script, paste its Web App URL into the form's <code>action<
 
 <footer><div class="container">© 2026 HERO BRAND • Free Fire Tournament Platform • Replace this text with your Discord / WhatsApp / social links.</div></footer>
 
+</div>
+
 <script>
+
+document.getElementById('playerRegistrationForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('playerName').value.trim();
+  const uid = document.getElementById('playerUid').value.trim();
+  const email = document.getElementById('playerEmail').value.trim();
+  const password = document.getElementById('playerPassword').value;
+  const confirm = document.getElementById('playerConfirmPassword').value;
+  const error = document.getElementById('playerError');
+
+  error.style.display = 'none';
+
+  if(password !== confirm){
+    error.textContent = 'Passwords do not match.';
+    error.style.display = 'block';
+    return;
+  }
+
+  if(!/^[^@\s]+@gmail\.com$/i.test(email)){
+    error.textContent = 'Please enter a valid Gmail address.';
+    error.style.display = 'block';
+    return;
+  }
+
+  // Registration is completed locally. No password is sent to Google Sheets.
+  sessionStorage.setItem('heroPlayerRegistered','1');
+  sessionStorage.setItem('heroPlayerName',name);
+  sessionStorage.setItem('heroPlayerUid',uid);
+  sessionStorage.setItem('heroPlayerEmail',email);
+
+  document.getElementById('playerGate').style.display = 'none';
+  document.getElementById('tournamentSite').style.display = 'block';
+  window.scrollTo(0,0);
+});
+
+// Keep the tournament page open during the current browser session after registration.
+if(sessionStorage.getItem('heroPlayerRegistered') === '1'){
+  document.getElementById('playerGate').style.display = 'none';
+  document.getElementById('tournamentSite').style.display = 'block';
+}
+
 function showSubmitted(){
   setTimeout(function(){
     document.getElementById('formmsg').style.display='block';
