@@ -13,16 +13,30 @@ section{padding:34px 0 70px}.dashboard{padding-top:32px}.welcome,.page-title{dis
 .table-wrap{overflow:auto}.leaderboard{width:100%;border-collapse:collapse}.leaderboard th,.leaderboard td{padding:14px;text-align:left;border-bottom:1px solid #193149;font-size:13px}.leaderboard th{color:var(--yellow)}.leaderboard td{color:#c7d4e3}.rank{color:var(--blue);font-weight:900}.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rule{background:#091522;border:1px solid #19344e;border-radius:14px;padding:18px}.rule b{display:block;color:var(--yellow);margin-bottom:5px}.rule p{color:var(--muted);font-size:13px}.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.support{background:#091522;border:1px solid #19344e;border-radius:14px;padding:22px}.support h3{margin:8px 0}.support p{color:var(--muted);font-size:13px}.wallet{display:grid;grid-template-columns:1fr 1fr;gap:18px}.wallet-card{background:linear-gradient(135deg,#0c2035,#091321);border:1px solid #1e486d;border-radius:16px;padding:24px}.wallet-card h3{color:#9eb3c9;font-size:13px}.amount{font-size:40px;color:var(--yellow);font-weight:900;margin:8px 0}.wallet-card p{color:var(--muted);font-size:12px}
 form{max-width:850px;margin:auto;background:#091522;padding:26px;border:1px solid #19344e;border-radius:16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{font-size:13px;color:#cbd8e7}input,select,textarea{width:100%;margin-top:7px;background:#06101c;color:#fff;border:1px solid #24425f;border-radius:9px;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue)}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}.notice{padding:15px;border-left:3px solid var(--yellow);background:#12170f;color:#cbd4df;margin-top:18px;border-radius:8px;font-size:13px}footer{border-top:1px solid #16304a;padding:30px 0;color:#7188a1;font-size:12px;text-align:center}
 #playerGate{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 0%,#0e3a65 0,transparent 42%),#040a12;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto}.auth-card{width:min(520px,100%);background:#091522;border:1px solid #245177;border-radius:20px;padding:32px;box-shadow:0 25px 80px #000b}.auth-brand{text-align:center;font-size:27px;font-weight:900;letter-spacing:1px;margin-bottom:8px}.auth-brand span{color:var(--yellow)}.auth-card h2{text-align:center;font-size:25px;margin:8px 0}.auth-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:24px}.auth-form{display:grid;gap:15px}.auth-form label{font-size:13px;color:#c8d6e7;font-weight:700}.auth-form input{width:100%;margin-top:7px;padding:13px 14px;border:1px solid #294863;border-radius:10px;background:#050d16;color:#fff;outline:none}.auth-form input:focus{border-color:var(--blue)}.auth-btn{width:100%;border:0;cursor:pointer;margin-top:4px}.auth-error{display:none;color:#ff7676;font-size:13px;text-align:center}#tournamentSite{display:none}
+.admin-box{max-width:900px;margin:auto}.admin-note{padding:14px 16px;border-left:3px solid var(--yellow);background:#12170f;color:#cbd4df;border-radius:8px;font-size:13px;margin-bottom:18px}.admin-form{max-width:none;margin:0;padding:0;background:transparent;border:0}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.admin-form label{font-size:13px;color:#cbd8e7}.admin-form input[type=file]{padding:10px}.admin-form button{grid-column:1/-1}.admin-form .full{grid-column:1/-1}.admin-form input:focus{border-color:var(--blue)}
 @media(max-width:900px){nav{gap:3px}.stats{grid-template-columns:1fr 1fr}.quick{grid-template-columns:repeat(3,1fr)}.tournament-grid{grid-template-columns:1fr}.hero-panel{grid-template-columns:1fr}.support-grid{grid-template-columns:1fr}.wallet{grid-template-columns:1fr}}
 @media(max-width:650px){.nav-user{display:none}nav a:nth-child(n+5){display:none}.nav{justify-content:space-between}.stats{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.filters,.task-grid,.rules,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.page-title{align-items:start;flex-direction:column}.tasks-banner{align-items:start;flex-direction:column}}
 </style></head><body>
 <div id="playerGate">
   <div class="auth-card">
     <div class="auth-brand">HERO <span>BRAND</span></div>
+    <h2>Create Player Account</h2>
+    <p class="auth-sub">Register first to enter the tournament dashboard.</p>
+    <form id="playerRegistrationForm" class="auth-form">
+      <label>Player Name<input id="playerName" required placeholder="Enter player name"></label>
+      <label>Player UID<input id="playerUid" required placeholder="Enter Free Fire UID"></label>
+      <label>Gmail<input id="playerEmail" type="email" required placeholder="example@gmail.com"></label>
+      <label>Password<input id="playerPassword" type="password" required minlength="6" placeholder="Create your password"></label>
+      <label>Confirm Password<input id="playerConfirmPassword" type="password" required minlength="6" placeholder="Confirm your password"></label>
+      <div id="playerError" class="auth-error"></div>
+      <button class="btn auth-btn" type="submit">Register & Enter Tournaments</button>
+    </form>
+  </div>
+</div>
 
 <div id="tournamentSite">
 <header><div class="container nav"><a class="logo" href="#home">HERO <span>BRAND</span></a>
-<nav><a href="#home" class="active">▦ Dashboard</a><a href="#tournaments">🏆 Tournaments</a><a href="#tasks">◎ Tasks</a><a href="#leaderboard">🏆 Leaderboard</a><a href="#rules">▣ Guidelines</a><a href="#support">▢ Support</a><a href="#wallet">▣ Wallet</a></nav>
+<nav><a href="#home" class="active">▦ Dashboard</a><a href="#tournaments">🏆 Tournaments</a><a href="#tasks">◎ Tasks</a><a href="#leaderboard">🏆 Leaderboard</a><a href="#rules">▣ Guidelines</a><a href="#support">▢ Support</a><a href="#wallet">▣ Wallet</a><a href="#admin">⚙ Admin</a></nav>
 <div class="nav-user"><div class="userbox"><b id="navPlayerName">PLAYER</b><span id="navPlayerEmail">player@gmail.com</span></div><div class="avatar">P</div><a href="#" class="logout" onclick="logoutPlayer();return false;">Logout</a></div></div></header>
 <main>
 <section id="home" class="dashboard"><div class="container"><div class="welcome"><div><h1>Welcome back, <span class="yellow" id="welcomeName">Player</span></h1><p>Your HERO BRAND gaming dashboard</p></div><div class="balance-mini"><span>🪙 Your Balance</span><b>0 coins</b></div></div>
@@ -39,6 +53,28 @@ form{max-width:850px;margin:auto;background:#091522;padding:26px;border:1px soli
 <section id="support"><div class="container"><div class="page-title"><div><h1>▢ <span class="yellow">Support</span></h1><p>Need help with a tournament or registration?</p></div></div><div class="support-grid"><div class="support"><div class="stat-icon">💬</div><h3>Discord Support</h3><p>Contact HERO BRAND staff through your official Discord support channel.</p></div><div class="support"><div class="stat-icon">📱</div><h3>WhatsApp</h3><p>Use the tournament contact number for registration or payment questions.</p></div><div class="support"><div class="stat-icon">❓</div><h3>FAQ</h3><p>Check tournament rules and registration details before joining.</p></div></div></div></section>
 <section id="wallet"><div class="container"><div class="page-title"><div><h1>▣ <span class="yellow">My Wallet</span></h1><p>Your HERO BRAND coin balance.</p></div></div><div class="wallet"><div class="wallet-card"><h3>Available Balance</h3><div class="amount">0 🪙</div><p>Coins can be used for eligible tournament entries.</p></div><div class="wallet-card"><h3>Net Earnings</h3><div class="amount">+0</div><p>Your current tournament earnings will appear here.</p></div></div></div></section>
 <section id="profile"><div class="container"><div class="page-title"><div><h1>♙ <span class="yellow">Profile</span></h1><p>Your player account details.</p></div></div><div class="section-box"><p><b>Player Name:</b> <span id="profileName">Player</span></p><p style="margin-top:10px"><b>Player UID:</b> <span id="profileUid">—</span></p><p style="margin-top:10px"><b>Gmail:</b> <span id="profileEmail">—</span></p></div></div></section>
+<section id="admin">
+<div class="container">
+<div class="page-title"><div><h1>⚙ <span class="yellow">Admin Tournament Upload</span></h1><p>Only the administrator password can publish tournament uploads.</p></div></div>
+<div class="section-box admin-box">
+  <div class="admin-note"><strong>Admin only:</strong> Enter your private admin password to upload a tournament banner or file. The password is checked by Google Apps Script and is not stored in this page.</div>
+  <form id="adminUploadForm" class="admin-form" target="adminUploadFrame" method="POST" action="https://script.google.com/macros/s/AKfycbzqfvcVTh899cT0SD8dbOmsc1N456rqhe234EBavtXR2pnMV2yjC3PfIO_6C5-x3auUeg/exec">
+    <input type="hidden" name="action" value="adminUpload">
+    <label>Admin Password<input name="adminPassword" type="password" required placeholder="Enter your private admin password"></label>
+    <label>Tournament Name<input name="title" required placeholder="e.g. HERO CLASH #02"></label>
+    <label>Entry Fee<input name="entryFee" required placeholder="e.g. 20 coins"></label>
+    <label>Prize Pool<input name="prizePool" required placeholder="e.g. 500 coins"></label>
+    <label class="full">Tournament File / Banner<input id="adminFile" type="file" accept="image/*,.pdf" required></label>
+    <input type="hidden" name="fileName" id="adminFileName">
+    <input type="hidden" name="fileData" id="adminFileData">
+    <button class="btn" type="submit">Upload Tournament</button>
+    <div id="adminMsg" class="notice" style="display:none"></div>
+  </form>
+  <iframe name="adminUploadFrame" id="adminUploadFrame" style="display:none"></iframe>
+</div>
+</div>
+</section>
+
 <section id="register"><div class="container">
 <div class="section-head"><div><h2>Team Registration</h2><p>Register your squad for an upcoming HERO BRAND tournament.</p></div></div>
 
@@ -93,54 +129,49 @@ After you deploy the script, paste its Web App URL into the form's <code>action<
 </main><footer>© 2026 HERO BRAND • Free Fire Tournament Platform</footer></div>
 
 <script>
-
 document.getElementById('playerRegistrationForm').addEventListener('submit', function(e){
   e.preventDefault();
-
-  const name = document.getElementById('playerName').value.trim();
-  const uid = document.getElementById('playerUid').value.trim();
-  const email = document.getElementById('playerEmail').value.trim();
-  const password = document.getElementById('playerPassword').value;
-  const confirm = document.getElementById('playerConfirmPassword').value;
-  const error = document.getElementById('playerError');
-
-  error.style.display = 'none';
-
-  if(password !== confirm){
-    error.textContent = 'Passwords do not match.';
-    error.style.display = 'block';
-    return;
-  }
-
-  if(!/^[^@\s]+@gmail\.com$/i.test(email)){
-    error.textContent = 'Please enter a valid Gmail address.';
-    error.style.display = 'block';
-    return;
-  }
-
-  // Registration is completed locally. No password is sent to Google Sheets.
+  const name=document.getElementById('playerName').value.trim();
+  const uid=document.getElementById('playerUid').value.trim();
+  const email=document.getElementById('playerEmail').value.trim();
+  const password=document.getElementById('playerPassword').value;
+  const confirm=document.getElementById('playerConfirmPassword').value;
+  const error=document.getElementById('playerError');
+  error.style.display='none';
+  if(password.length<6){error.textContent='Password must be at least 6 characters.';error.style.display='block';return;}
+  if(password!==confirm){error.textContent='Passwords do not match.';error.style.display='block';return;}
+  if(!/^[^@\s]+@gmail\.com$/i.test(email)){error.textContent='Please enter a valid Gmail address.';error.style.display='block';return;}
   sessionStorage.setItem('heroPlayerRegistered','1');
   sessionStorage.setItem('heroPlayerName',name);
   sessionStorage.setItem('heroPlayerUid',uid);
   sessionStorage.setItem('heroPlayerEmail',email);
-
-  document.getElementById('playerGate').style.display = 'none';
-  document.getElementById('tournamentSite').style.display = 'block';
+  document.getElementById('playerGate').style.display='none';
+  document.getElementById('tournamentSite').style.display='block';
   window.scrollTo(0,0);
 });
 
-// Keep the tournament page open during the current browser session after registration.
-if(sessionStorage.getItem('heroPlayerRegistered') === '1'){
-  document.getElementById('playerGate').style.display = 'none';
-  document.getElementById('tournamentSite').style.display = 'block';
-}
+const pf=document.getElementById('adminFile');
+if(pf){pf.addEventListener('change',function(){
+  const file=this.files[0];
+  if(!file)return;
+  if(file.size>2*1024*1024){this.value='';const m=document.getElementById('adminMsg');m.textContent='Please keep the upload under 2 MB.';m.style.display='block';return;}
+  document.getElementById('adminFileName').value=file.name;
+  const reader=new FileReader();
+  reader.onload=function(){document.getElementById('adminFileData').value=reader.result;};
+  reader.readAsDataURL(file);
+});}
 
-function showSubmitted(){
-  setTimeout(function(){
-    document.getElementById('formmsg').style.display='block';
-    document.getElementById('registrationForm').reset();
-  }, 800);
-}
+const af=document.getElementById('adminUploadForm');
+if(af){af.addEventListener('submit',function(e){
+  const data=document.getElementById('adminFileData').value;
+  const msg=document.getElementById('adminMsg');
+  if(!data){e.preventDefault();msg.textContent='Please wait for the file to finish loading, then submit again.';msg.style.display='block';return;}
+  msg.textContent='Uploading...';msg.style.display='block';
+  setTimeout(function(){msg.textContent='Upload submitted. If the password is correct, the file will be saved to the admin Google Drive folder.';},1000);
+});}
+
+if(sessionStorage.getItem('heroPlayerRegistered')==='1'){document.getElementById('playerGate').style.display='none';document.getElementById('tournamentSite').style.display='block';}
+function showSubmitted(){setTimeout(function(){document.getElementById('formmsg').style.display='block';document.getElementById('registrationForm').reset();},800);}
 </script>
 <script>
 (function(){const n=sessionStorage.getItem('heroPlayerName')||'Player',u=sessionStorage.getItem('heroPlayerUid')||'—',e=sessionStorage.getItem('heroPlayerEmail')||'—';['welcomeName','navPlayerName','profileName'].forEach(id=>{const x=document.getElementById(id);if(x)x.textContent=n});['navPlayerEmail','profileEmail'].forEach(id=>{const x=document.getElementById(id);if(x)x.textContent=e});const x=document.getElementById('profileUid');if(x)x.textContent=u;document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));})();
