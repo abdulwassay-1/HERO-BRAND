@@ -1,139 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HERO BRAND | Free Fire Tournaments</title>
-<style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HERO BRAND | Gaming Dashboard</title><style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07080d;--card:#11131c;--card2:#171a25;--text:#f5f7ff;--muted:#9ba3b7;--accent:#ffb000;--accent2:#ff5b22;--line:#252938}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 80% 10%,#29200b 0,transparent 28%),var(--bg);color:var(--text);line-height:1.5}
-a{text-decoration:none;color:inherit}
-.container{width:min(1120px,92%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(7,8,13,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:24px;font-weight:900;letter-spacing:1px}.logo span{color:var(--accent)}
-nav{display:flex;gap:24px;color:#c8ccda;font-size:14px;font-weight:700}
-nav a:hover{color:var(--accent)}
-.btn{display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#111;font-weight:900;border:0;cursor:pointer}
-.btn.outline{background:transparent;color:var(--text);border:1px solid #454a5d}
-.hero{min-height:590px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px}
-.badge{display:inline-block;border:1px solid #4b3a13;background:#211a09;color:#ffd36b;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:18px}
-h1{font-size:clamp(48px,7vw,84px);line-height:.92;letter-spacing:-3px}
-h1 span{color:var(--accent)}
-.hero p{color:var(--muted);font-size:17px;max-width:590px;margin:22px 0 28px}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero-card{background:linear-gradient(145deg,#1a1d28,#0d0f16);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 20px 60px #0008}
-.hero-card h3{font-size:22px;margin-bottom:5px}.small{color:var(--muted);font-size:13px}
-.prize{font-size:44px;font-weight:900;color:var(--accent);margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 70px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}.stat b{font-size:28px}.stat p{color:var(--muted);font-size:12px}
-section{padding:70px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.section-head h2{font-size:34px}.section-head p{color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
-.card:hover{border-color:#6d5520;transform:translateY(-2px);transition:.2s}
-.tag{display:inline-block;color:#ffd56d;background:#2a210d;padding:5px 9px;border-radius:7px;font-size:11px;font-weight:800;margin-bottom:15px}
-.card h3{font-size:21px;margin-bottom:8px}.meta{color:var(--muted);font-size:13px;margin:6px 0}.price{font-size:25px;font-weight:900;color:var(--accent);margin:14px 0}
-.card .btn{width:100%;text-align:center;margin-top:10px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden}
-th,td{text-align:left;padding:15px;border-bottom:1px solid var(--line);font-size:14px}th{color:#ffd36b}td{color:#d9dce7}
-form{max-width:720px;margin:auto;background:var(--card);padding:28px;border:1px solid var(--line);border-radius:18px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-label{font-size:13px;color:#cbd0df}input,select,textarea{width:100%;margin-top:7px;background:#0b0d13;color:#fff;border:1px solid #303444;border-radius:9px;padding:12px;outline:none}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
-.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rule{padding:18px;background:var(--card);border:1px solid var(--line);border-radius:14px}.rule b{display:block;margin-bottom:5px}.rule p{color:var(--muted);font-size:13px}
-.notice{padding:16px;border-left:3px solid var(--accent);background:#15130d;color:#c9cbd4;margin-top:18px;border-radius:8px}
-footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:13px}
-@media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr;padding:55px 0}.grid{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.rules{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}h1{letter-spacing:-2px}}
-
-/* PLAYER REGISTRATION GATE */
-#playerGate{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 0%,#2b2108 0,transparent 38%),#07080d;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto}
-.auth-card{width:min(520px,100%);background:#11131c;border:1px solid #252938;border-radius:22px;padding:32px;box-shadow:0 25px 80px rgba(0,0,0,.55)}
-.auth-brand{text-align:center;font-size:27px;font-weight:900;letter-spacing:1px;margin-bottom:8px}.auth-brand span{color:#ffb000}
-.auth-card h2{text-align:center;font-size:25px;margin:8px 0}
-.auth-sub{text-align:center;color:#9ba3b7;font-size:14px;margin-bottom:24px}
-.auth-form{display:grid;gap:15px}
-.auth-form label{font-size:13px;color:#c8ccda;font-weight:700}
-.auth-form input{width:100%;margin-top:7px;padding:13px 14px;border:1px solid #303445;border-radius:10px;background:#090b11;color:#fff;outline:none}
-.auth-form input:focus{border-color:#ffb000}
-.auth-btn{width:100%;border:0;cursor:pointer;margin-top:4px}
-.auth-error{display:none;color:#ff7676;font-size:13px;text-align:center}
-#tournamentSite{display:none}
-</style>
-</head>
-<body>
-
+:root{--bg:#050b16;--blue:#1597ff;--blue2:#0066ff;--yellow:#ffc400;--text:#f4f8ff;--muted:#8ea2bb;--green:#00e6a0;--purple:#b96cff}
+html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#071221,#03070d 72%);color:var(--text);line-height:1.5}a{text-decoration:none;color:inherit}.container{width:min(1220px,94%);margin:auto}
+header{position:sticky;top:0;z-index:100;background:rgba(5,12,23,.95);backdrop-filter:blur(14px);border-bottom:1px solid #17304a}.nav{height:68px;display:flex;align-items:center;gap:20px}.logo{font-size:22px;font-weight:900;letter-spacing:1px;white-space:nowrap}.logo span,.yellow{color:var(--yellow)}nav{display:flex;gap:8px;align-items:center;flex:1;justify-content:center}nav a{color:#b9c9dc;font-size:13px;font-weight:700;padding:9px 11px;border-radius:10px}nav a:hover,nav a.active{color:var(--yellow);background:#10243a}.nav-user{display:flex;align-items:center;gap:10px}.avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#0d2b4b;border:1px solid #1d5a91;color:var(--blue);font-weight:900}.userbox{text-align:right;line-height:1.1}.userbox b{font-size:12px}.userbox span{font-size:9px;color:#7188a4}.logout{color:#ff5f6d;font-weight:800;font-size:12px}
+section{padding:34px 0 70px}.dashboard{padding-top:32px}.welcome,.page-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.welcome h1{font-size:28px}.page-title h1{font-size:34px}.welcome p,.page-title p{color:var(--muted);font-size:13px}.balance-mini{background:linear-gradient(135deg,#13243a,#0b1524);border:1px solid #1b4268;border-radius:14px;padding:12px 18px;text-align:right}.balance-mini span{display:block;color:#8ba1b9;font-size:11px}.balance-mini b{color:var(--yellow);font-size:19px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}.stat{min-height:150px;padding:21px;border-radius:16px;background:linear-gradient(145deg,#101c2d,#091321);border:1px solid #1a3957}.stat.yellow-card{border-color:#5e4a12}.stat.green-card{border-color:#145d4d}.stat.purple-card{border-color:#4d2774}.stat.blue-card{border-color:#124d82}.stat-icon{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-size:21px;margin-bottom:12px;background:#172b43;color:var(--blue)}.yellow-card .stat-icon{background:#3a2f0b;color:var(--yellow)}.green-card .stat-icon{background:#073a31;color:var(--green)}.purple-card .stat-icon{background:#2c1644;color:var(--purple)}.stat label{display:block;color:#91a6be;font-size:12px;margin-bottom:4px}.stat b{font-size:28px}.stat small{display:block;color:#7187a0;font-size:11px}
+.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:35px}.quick a{background:#0b1624;border:1px solid #203a55;border-radius:14px;padding:19px 12px;text-align:center;font-weight:800;font-size:13px}.quick a:hover{border-color:var(--blue);transform:translateY(-2px)}.quick i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:#17283b;color:var(--blue);font-style:normal;font-size:19px}.quick a:nth-child(2) i,.quick a:nth-child(3) i{color:var(--yellow);background:#332a0c}.quick a:nth-child(5) i{color:var(--purple);background:#28173c}
+.hero-panel{background:linear-gradient(135deg,#0b2036,#0a1220);border:1px solid #1b4163;border-radius:18px;padding:28px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}.eyebrow{color:var(--yellow);font-weight:800;font-size:12px;letter-spacing:1px}.hero-panel h2{font-size:34px;margin:7px 0}.hero-panel p{color:var(--muted);font-size:14px}.hero-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.btn{display:inline-block;padding:11px 18px;border-radius:10px;background:linear-gradient(135deg,var(--yellow),#ffab00);color:#07111e;font-weight:900;border:0;cursor:pointer}.btn.blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff}.hero-side{border:1px solid #234664;background:#091725;border-radius:14px;padding:20px}.hero-side .coin{font-size:36px;color:var(--yellow);font-weight:900}.hero-side small{color:var(--muted)}
+.section-box{background:#07111e;border:1px solid #18344f;border-radius:16px;padding:22px}.filters{display:grid;grid-template-columns:1fr 1fr;gap:30px}.filter-title{font-size:12px;color:#b9c9dc;font-weight:800;margin-bottom:8px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:0;background:#172b40;color:#bfd0e3;border-radius:9px;padding:9px 15px;font-weight:800;cursor:pointer}.chip.active{background:var(--yellow);color:#07111e}
+.tournament-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}.t-card{background:linear-gradient(145deg,#091421,#060d17);border:1px solid #1b344e;border-radius:16px;padding:22px}.t-card:hover{border-color:#2c6798;transform:translateY(-2px);transition:.2s}.t-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.t-card h3{font-size:19px}.pill{display:inline-block;font-size:10px;font-weight:900;padding:5px 8px;border-radius:6px;background:#093258;color:#21a8ff}.pill.purple{background:#2b1544;color:#d18aff}.t-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;color:#9bb0c6;font-size:12px}.t-meta b{display:block;color:#f0f5fb;font-size:13px;margin-top:2px}.prize-row{border-top:1px solid #20384f;padding-top:14px;display:flex;justify-content:space-between}.prize-row b{color:var(--green)}.prize-row span{color:var(--muted);font-size:11px}.t-card .btn{width:100%;text-align:center;margin-top:16px}
+.tasks-banner{display:flex;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(135deg,#0d1b2e,#120d22);border:1px solid #3b351a;border-radius:16px;padding:24px;margin-bottom:26px}.tasks-banner h2{font-size:22px}.tasks-banner p{color:var(--muted);font-size:13px}.coinbox{border:1px solid #594b1d;background:#1d1a13;border-radius:12px;padding:12px 20px;text-align:center}.coinbox b{display:block;color:var(--yellow);font-size:22px}.task-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.task{background:#091522;border:1px solid #1a3651;border-radius:14px;padding:19px;display:flex;gap:15px;align-items:center}.task-icon{width:44px;height:44px;border-radius:50%;background:#102943;color:var(--blue);display:grid;place-items:center;font-size:20px;flex:none}.task h3{font-size:15px}.task p{color:var(--muted);font-size:12px}.reward{margin-left:auto;color:var(--yellow);font-weight:900;font-size:13px}
+.table-wrap{overflow:auto}.leaderboard{width:100%;border-collapse:collapse}.leaderboard th,.leaderboard td{padding:14px;text-align:left;border-bottom:1px solid #193149;font-size:13px}.leaderboard th{color:var(--yellow)}.leaderboard td{color:#c7d4e3}.rank{color:var(--blue);font-weight:900}.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rule{background:#091522;border:1px solid #19344e;border-radius:14px;padding:18px}.rule b{display:block;color:var(--yellow);margin-bottom:5px}.rule p{color:var(--muted);font-size:13px}.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.support{background:#091522;border:1px solid #19344e;border-radius:14px;padding:22px}.support h3{margin:8px 0}.support p{color:var(--muted);font-size:13px}.wallet{display:grid;grid-template-columns:1fr 1fr;gap:18px}.wallet-card{background:linear-gradient(135deg,#0c2035,#091321);border:1px solid #1e486d;border-radius:16px;padding:24px}.wallet-card h3{color:#9eb3c9;font-size:13px}.amount{font-size:40px;color:var(--yellow);font-weight:900;margin:8px 0}.wallet-card p{color:var(--muted);font-size:12px}
+form{max-width:850px;margin:auto;background:#091522;padding:26px;border:1px solid #19344e;border-radius:16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{font-size:13px;color:#cbd8e7}input,select,textarea{width:100%;margin-top:7px;background:#06101c;color:#fff;border:1px solid #24425f;border-radius:9px;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue)}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}.notice{padding:15px;border-left:3px solid var(--yellow);background:#12170f;color:#cbd4df;margin-top:18px;border-radius:8px;font-size:13px}footer{border-top:1px solid #16304a;padding:30px 0;color:#7188a1;font-size:12px;text-align:center}
+#playerGate{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 0%,#0e3a65 0,transparent 42%),#040a12;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto}.auth-card{width:min(520px,100%);background:#091522;border:1px solid #245177;border-radius:20px;padding:32px;box-shadow:0 25px 80px #000b}.auth-brand{text-align:center;font-size:27px;font-weight:900;letter-spacing:1px;margin-bottom:8px}.auth-brand span{color:var(--yellow)}.auth-card h2{text-align:center;font-size:25px;margin:8px 0}.auth-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:24px}.auth-form{display:grid;gap:15px}.auth-form label{font-size:13px;color:#c8d6e7;font-weight:700}.auth-form input{width:100%;margin-top:7px;padding:13px 14px;border:1px solid #294863;border-radius:10px;background:#050d16;color:#fff;outline:none}.auth-form input:focus{border-color:var(--blue)}.auth-btn{width:100%;border:0;cursor:pointer;margin-top:4px}.auth-error{display:none;color:#ff7676;font-size:13px;text-align:center}#tournamentSite{display:none}
+@media(max-width:900px){nav{gap:3px}.stats{grid-template-columns:1fr 1fr}.quick{grid-template-columns:repeat(3,1fr)}.tournament-grid{grid-template-columns:1fr}.hero-panel{grid-template-columns:1fr}.support-grid{grid-template-columns:1fr}.wallet{grid-template-columns:1fr}}
+@media(max-width:650px){.nav-user{display:none}nav a:nth-child(n+5){display:none}.nav{justify-content:space-between}.stats{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.filters,.task-grid,.rules,.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.page-title{align-items:start;flex-direction:column}.tasks-banner{align-items:start;flex-direction:column}}
+</style></head><body>
 <div id="playerGate">
   <div class="auth-card">
     <div class="auth-brand">HERO <span>BRAND</span></div>
-    <h2>Player Registration</h2>
-    <p class="auth-sub">Register first, then your tournament page will open.</p>
-    <form class="auth-form" id="playerRegistrationForm">
-      <label>Player Name *
-        <input id="playerName" required placeholder="Enter your player name">
-      </label>
-      <label>Player UID *
-        <input id="playerUid" required placeholder="Enter your Free Fire UID">
-      </label>
-      <label>Gmail *
-        <input id="playerEmail" type="email" required placeholder="Enter your Gmail">
-      </label>
-      <label>HERO BRAND Password *
-        <input id="playerPassword" type="password" required minlength="6" placeholder="Create a password">
-      </label>
-      <label>Confirm Password *
-        <input id="playerConfirmPassword" type="password" required minlength="6" placeholder="Confirm your password">
-      </label>
-      <div class="auth-error" id="playerError"></div>
-      <button class="btn auth-btn" type="submit">Register & Open Tournaments</button>
-    </form>
-    <p class="auth-sub" style="margin:14px 0 0;font-size:12px">Use a HERO BRAND password here — never enter your real Gmail password. These password fields are not sent to your tournament Google Sheet.</p>
-  </div>
-</div>
+
 <div id="tournamentSite">
-
-<header><div class="container nav">
-<a class="logo" href="#home">HERO <span>BRAND</span></a>
-<nav><a href="#home">Home</a><a href="#tournaments">Tournaments</a><a href="#register">Register</a><a href="#leaderboard">Leaderboard</a><a href="#rules">Rules</a></nav>
-<a class="btn" href="#register">Join Now</a>
-</div></header>
-
+<header><div class="container nav"><a class="logo" href="#home">HERO <span>BRAND</span></a>
+<nav><a href="#home" class="active">▦ Dashboard</a><a href="#tournaments">🏆 Tournaments</a><a href="#tasks">◎ Tasks</a><a href="#leaderboard">🏆 Leaderboard</a><a href="#rules">▣ Guidelines</a><a href="#support">▢ Support</a><a href="#wallet">▣ Wallet</a></nav>
+<div class="nav-user"><div class="userbox"><b id="navPlayerName">PLAYER</b><span id="navPlayerEmail">player@gmail.com</span></div><div class="avatar">P</div><a href="#" class="logout" onclick="logoutPlayer();return false;">Logout</a></div></div></header>
 <main>
-<section id="home"><div class="container hero">
-<div>
-<span class="badge">🔥 FREE FIRE TOURNAMENT PLATFORM</span>
-<h1>PLAY.<br><span>COMPETE.</span><br>WIN.</h1>
-<p>Welcome to HERO BRAND — your home for competitive Free Fire tournaments, team battles, leaderboards and exciting prize pools.</p>
-<div class="actions"><a class="btn" href="#tournaments">View Tournaments</a><a class="btn outline" href="#register">Register Team</a></div>
-</div>
-<div class="hero-card">
-<span class="tag">UPCOMING</span>
-<h3>HERO CLASH #01</h3><p class="small">Squad Tournament • 4 Players</p>
-<div class="prize">Rs. 50,000</div>
-<p class="meta">📅 12 October 2026 &nbsp; • &nbsp; ⏰ 8:00 PM</p>
-<p class="meta">🎟 Entry: Rs. 500 &nbsp; • &nbsp; 👥 48 / 50 Slots</p>
-<a class="btn" style="margin-top:18px;width:100%;text-align:center" href="#register">Register Now</a>
-</div>
-</div></section>
-
-<div class="container grid">
-<div class="stat"><b>24+</b><p>TOURNAMENTS</p></div><div class="stat"><b>1.2K+</b><p>PLAYERS</p></div><div class="stat"><b>Rs. 5L+</b><p>PRIZES WON</p></div><div class="stat"><b>100%</b><p>COMPETITIVE</p></div>
-</div>
-
-<section id="tournaments"><div class="container">
-<div class="section-head"><div><h2>Upcoming Tournaments</h2><p>Choose your battle and secure your slot.</p></div></div>
-<div class="cards">
-<div class="card"><span class="tag">OPEN</span><h3>HERO CLASH #01</h3><p class="meta">Squad • 50 Slots</p><p class="meta">12 Oct 2026 • 8:00 PM</p><div class="price">Rs. 50,000</div><a class="btn" href="#register">Register</a></div>
-<div class="card"><span class="tag">OPEN</span><h3>BOOYAH NIGHT</h3><p class="meta">Squad • 25 Slots</p><p class="meta">18 Oct 2026 • 9:00 PM</p><div class="price">Rs. 25,000</div><a class="btn" href="#register">Register</a></div>
-<div class="card"><span class="tag">SOON</span><h3>HERO ELITE CUP</h3><p class="meta">Squad • 100 Slots</p><p class="meta">25 Oct 2026 • 8:30 PM</p><div class="price">Rs. 100,000</div><a class="btn" href="#register">Register</a></div>
-</div></div></section>
-
-<section id="leaderboard"><div class="container">
-<div class="section-head"><div><h2>Leaderboard</h2><p>Current tournament standings.</p></div></div>
-<table><thead><tr><th>#</th><th>Team</th><th>Matches</th><th>Kills</th><th>Points</th></tr></thead>
-<tbody><tr><td>1</td><td>🔥 Alpha Squad</td><td>5</td><td>42</td><td>78</td></tr><tr><td>2</td><td>⚡ Shadow X</td><td>5</td><td>38</td><td>72</td></tr><tr><td>3</td><td>💀 Phantom</td><td>5</td><td>35</td><td>68</td></tr><tr><td>4</td><td>👑 Kings 4</td><td>5</td><td>31</td><td>61</td></tr></tbody></table>
-</div></section>
-
+<section id="home" class="dashboard"><div class="container"><div class="welcome"><div><h1>Welcome back, <span class="yellow" id="welcomeName">Player</span></h1><p>Your HERO BRAND gaming dashboard</p></div><div class="balance-mini"><span>🪙 Your Balance</span><b>0 coins</b></div></div>
+<div class="stats"><div class="stat yellow-card"><div class="stat-icon">▣</div><label>Wallet Balance</label><b>0</b><small>coins</small></div><div class="stat green-card"><div class="stat-icon">🏆</div><label>Total Wins</label><b>0</b><small>0.0% win rate</small></div><div class="stat blue-card"><div class="stat-icon">〽</div><label>Active</label><b>0</b><small>tournaments</small></div><div class="stat purple-card"><div class="stat-icon">＄</div><label>Net Earnings</label><b>+0</b><small>coins</small></div></div>
+<div class="quick"><a href="#tournaments"><i>🏆</i>Browse Tournaments</a><a href="#tasks"><i>◎</i>Daily Tasks</a><a href="#wallet"><i>▣</i>My Wallet</a><a href="#support"><i>▢</i>Support</a><a href="#profile"><i>♙</i>Profile</a></div>
+<div class="hero-panel"><div><div class="eyebrow">HERO BRAND • FREE FIRE TOURNAMENTS</div><h2>Play. Compete. Win.</h2><p>Join tournaments, complete challenges, earn coins and build your competitive record.</p><div class="hero-actions"><a class="btn" href="#tournaments">Browse Tournaments</a><a class="btn blue" href="#register">Register Team</a></div></div><div class="hero-side"><small>Upcoming Prize Pool</small><div class="coin">50,000</div><small>HERO CLASH #01 • Squad</small></div></div></div></section>
+<section id="tournaments"><div class="container"><div class="page-title"><div><h1>🏆 <span class="yellow">Tournaments</span></h1><p>Join HERO BRAND tournaments and compete for prizes!</p></div><div class="balance-mini"><span>🪙 Your Balance</span><b>0 coins</b></div></div><div class="section-box"><div class="filters"><div><div class="filter-title">Game Type</div><div class="chips"><button class="chip active">All</button><button class="chip">BR</button><button class="chip">CS</button></div></div><div><div class="filter-title">Mode</div><div class="chips"><button class="chip active">All</button><button class="chip">Solo</button><button class="chip">Duo</button><button class="chip">Squad</button></div></div></div></div>
+<div class="tournament-grid"><div class="t-card"><div class="t-head"><h3>SOLO 21 PC BAN</h3><span class="pill">OPEN</span></div><div style="margin-top:8px"><span class="pill">BR</span> <span class="pill purple">Solo</span></div><div class="t-meta"><div>🪙 Entry Fee<b>12 coins/person</b></div><div>🏆 Prize Pool<b style="color:var(--green)">290 coins</b></div><div>♙ Prize Type<b style="color:var(--yellow)">Top 10</b></div><div>👥 Slots<b>24 / 50</b></div></div><div class="prize-row"><span>Prize Distribution</span><b>Top 1 • 87</b></div><a class="btn" href="#register">Join Tournament</a></div>
+<div class="t-card"><div class="t-head"><h3>SOLO 21 PC BAN</h3><span class="pill">OPEN</span></div><div style="margin-top:8px"><span class="pill">BR</span> <span class="pill purple">Solo</span></div><div class="t-meta"><div>🪙 Entry Fee<b>12 coins/person</b></div><div>🏆 Prize Pool<b style="color:var(--green)">290 coins</b></div><div>♙ Prize Type<b style="color:var(--yellow)">Top 5</b></div><div>👥 Slots<b>31 / 50</b></div></div><div class="prize-row"><span>Prize Distribution</span><b>Top 1 • 116</b></div><a class="btn" href="#register">Join Tournament</a></div>
+<div class="t-card"><div class="t-head"><h3>SOLO 21.5 PC BAN</h3><span class="pill">OPEN</span></div><div style="margin-top:8px"><span class="pill">BR</span> <span class="pill purple">Solo</span></div><div class="t-meta"><div>🪙 Entry Fee<b>12 coins/person</b></div><div>🏆 Prize Pool<b style="color:var(--green)">290 coins</b></div><div>♙ Prize Type<b style="color:var(--yellow)">Top 10</b></div><div>👥 Slots<b>18 / 50</b></div></div><div class="prize-row"><span>Prize Distribution</span><b>Top 1 • 87</b></div><a class="btn" href="#register">Join Tournament</a></div></div></div></section>
+<section id="tasks"><div class="container"><div class="page-title"><div><h1>⚡ <span class="yellow">Weekly Challenges</span></h1><p>Complete tasks to earn coins & exclusive rewards.</p></div><div class="coinbox">🪙 <b>0 coins</b></div></div><div class="tasks-banner"><div><h2>Active Challenges <span class="pill purple">Resets weekly</span></h2><p>Finish challenges to grow your HERO BRAND balance.</p></div><div class="coinbox"><b>0</b><span>coins earned</span></div></div><div class="task-grid"><div class="task"><div class="task-icon">🎯</div><div><h3>Play 3 tournaments</h3><p>Participate in three registered matches.</p></div><div class="reward">+50 🪙</div></div><div class="task"><div class="task-icon">🏆</div><div><h3>Finish in Top 10</h3><p>Reach a top-ten position in any match.</p></div><div class="reward">+75 🪙</div></div><div class="task"><div class="task-icon">⚡</div><div><h3>Complete your profile</h3><p>Add your player information.</p></div><div class="reward">+25 🪙</div></div><div class="task"><div class="task-icon">👥</div><div><h3>Register a squad</h3><p>Submit one complete team registration.</p></div><div class="reward">+40 🪙</div></div></div></div></section>
+<section id="leaderboard"><div class="container"><div class="page-title"><div><h1>🏆 <span class="yellow">Leaderboard</span></h1><p>Current HERO BRAND tournament standings.</p></div></div><div class="section-box table-wrap"><table class="leaderboard"><thead><tr><th>#</th><th>Player / Team</th><th>Matches</th><th>Kills</th><th>Points</th></tr></thead><tbody><tr><td class="rank">1</td><td>🔥 Alpha Squad</td><td>5</td><td>42</td><td>78</td></tr><tr><td class="rank">2</td><td>⚡ Shadow X</td><td>5</td><td>38</td><td>72</td></tr><tr><td class="rank">3</td><td>💀 Phantom</td><td>5</td><td>35</td><td>68</td></tr><tr><td class="rank">4</td><td>👑 Kings 4</td><td>5</td><td>31</td><td>61</td></tr></tbody></table></div></div></section>
+<section id="rules"><div class="container"><div class="page-title"><div><h1>▣ <span class="yellow">Guidelines</span></h1><p>Keep every tournament fair and competitive.</p></div></div><div class="rules"><div class="rule"><b>01 — Team Lineup</b><p>Each squad must play with registered players only.</p></div><div class="rule"><b>02 — Fair Play</b><p>Hacks, scripts, exploits and unfair third-party tools are prohibited.</p></div><div class="rule"><b>03 — Check-in</b><p>Teams should complete check-in before the announced deadline.</p></div><div class="rule"><b>04 — Match Room</b><p>Room ID and password should only be shared through official channels.</p></div><div class="rule"><b>05 — Evidence</b><p>Keep screenshots or match results when requested by admins.</p></div><div class="rule"><b>06 — Admin Decision</b><p>Organizers may review disputes using available match evidence.</p></div></div></div></section>
+<section id="support"><div class="container"><div class="page-title"><div><h1>▢ <span class="yellow">Support</span></h1><p>Need help with a tournament or registration?</p></div></div><div class="support-grid"><div class="support"><div class="stat-icon">💬</div><h3>Discord Support</h3><p>Contact HERO BRAND staff through your official Discord support channel.</p></div><div class="support"><div class="stat-icon">📱</div><h3>WhatsApp</h3><p>Use the tournament contact number for registration or payment questions.</p></div><div class="support"><div class="stat-icon">❓</div><h3>FAQ</h3><p>Check tournament rules and registration details before joining.</p></div></div></div></section>
+<section id="wallet"><div class="container"><div class="page-title"><div><h1>▣ <span class="yellow">My Wallet</span></h1><p>Your HERO BRAND coin balance.</p></div></div><div class="wallet"><div class="wallet-card"><h3>Available Balance</h3><div class="amount">0 🪙</div><p>Coins can be used for eligible tournament entries.</p></div><div class="wallet-card"><h3>Net Earnings</h3><div class="amount">+0</div><p>Your current tournament earnings will appear here.</p></div></div></div></section>
+<section id="profile"><div class="container"><div class="page-title"><div><h1>♙ <span class="yellow">Profile</span></h1><p>Your player account details.</p></div></div><div class="section-box"><p><b>Player Name:</b> <span id="profileName">Player</span></p><p style="margin-top:10px"><b>Player UID:</b> <span id="profileUid">—</span></p><p style="margin-top:10px"><b>Gmail:</b> <span id="profileEmail">—</span></p></div></div></section>
 <section id="register"><div class="container">
 <div class="section-head"><div><h2>Team Registration</h2><p>Register your squad for an upcoming HERO BRAND tournament.</p></div></div>
 
@@ -185,23 +90,7 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-s
 After you deploy the script, paste its Web App URL into the form's <code>action</code> field.
 </div>
 </div></section>
-
-<section id="rules"><div class="container">
-<div class="section-head"><div><h2>Tournament Rules</h2><p>Basic rules for a fair and competitive match.</p></div></div>
-<div class="rules">
-<div class="rule"><b>01 — Team Lineup</b><p>Each squad must play with registered players only.</p></div>
-<div class="rule"><b>02 — Fair Play</b><p>Hacks, scripts, exploits and unfair third-party tools are prohibited.</p></div>
-<div class="rule"><b>03 — Check-in</b><p>Teams should complete check-in before the announced deadline.</p></div>
-<div class="rule"><b>04 — Match Room</b><p>Room ID and password should only be shared through official channels.</p></div>
-<div class="rule"><b>05 — Evidence</b><p>Keep screenshots or match results when requested by admins.</p></div>
-<div class="rule"><b>06 — Admin Decision</b><p>Organizers may review disputes using available match evidence.</p></div>
-</div>
-</div></section>
-</main>
-
-<footer><div class="container">© 2026 HERO BRAND • Free Fire Tournament Platform • Replace this text with your Discord / WhatsApp / social links.</div></footer>
-
-</div>
+</main><footer>© 2026 HERO BRAND • Free Fire Tournament Platform</footer></div>
 
 <script>
 
@@ -253,5 +142,8 @@ function showSubmitted(){
   }, 800);
 }
 </script>
-</body>
-</html>
+<script>
+(function(){const n=sessionStorage.getItem('heroPlayerName')||'Player',u=sessionStorage.getItem('heroPlayerUid')||'—',e=sessionStorage.getItem('heroPlayerEmail')||'—';['welcomeName','navPlayerName','profileName'].forEach(id=>{const x=document.getElementById(id);if(x)x.textContent=n});['navPlayerEmail','profileEmail'].forEach(id=>{const x=document.getElementById(id);if(x)x.textContent=e});const x=document.getElementById('profileUid');if(x)x.textContent=u;document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));})();
+function logoutPlayer(){sessionStorage.clear();location.reload();}
+</script>
+</body></html>
